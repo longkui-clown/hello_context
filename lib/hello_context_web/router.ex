@@ -20,6 +20,7 @@ defmodule HelloContextWeb.Router do
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete],
                                               singleton: true
+    get "/login_out", SessionController, :login_out
   end
   
   scope "/cms", HelloContextWeb.CMS, as: :cms do

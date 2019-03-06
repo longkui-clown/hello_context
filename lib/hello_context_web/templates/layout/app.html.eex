@@ -12,10 +12,19 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <%= if Plug.Conn.get_session(@conn, :user_id) do %>
+              <li>
+                <a href= <%= Routes.user_path(@conn, :edit, Plug.Conn.get_session(@conn, :user_id)) %>> <%= Plug.Conn.get_session(@conn, :user_name) || "Unknown_user"%> </a>
+                <a href= <%= Routes.session_path(@conn, :login_out) %>> Login out </a>
+              </li>
+            <%= else %>
+              <li>
+                <a href= <%= Routes.session_path(@conn, :new) %>>Login </a>
+              </li>
+            <%= end %>
           </ul>
         </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
+        <a href="/" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
         </a>
       </section>

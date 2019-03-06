@@ -13,6 +13,7 @@ defmodule HelloContextWeb.SessionController do
         conn
         |> put_flash(:info, "Welcome back!")
         |> put_session(:user_id, user.id)
+        |> put_session(:user_name, user.username)
         |> configure_session(renew: true)
         |> redirect(to: "/")
       {:error, :unauthorized} ->
@@ -25,6 +26,12 @@ defmodule HelloContextWeb.SessionController do
   def delete(conn, _) do
     conn
     |> configure_session(drop: true)
+    |> redirect(to: "/")
+  end
+
+  def login_out(conn, _) do
+    conn
+    |> clear_session()
     |> redirect(to: "/")
   end
 
