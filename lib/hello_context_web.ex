@@ -34,10 +34,11 @@ defmodule HelloContextWeb do
         namespace: HelloContextWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1, redirect: 2]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+      import Plug.Conn
 
       import HelloContextWeb.ErrorHelpers
       import HelloContextWeb.Gettext

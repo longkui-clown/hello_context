@@ -14,7 +14,7 @@
           <ul>
             <%= if Plug.Conn.get_session(@conn, :user_id) do %>
               <li>
-                <a href= <%= Routes.user_path(@conn, :edit, Plug.Conn.get_session(@conn, :user_id)) %>> <%= Plug.Conn.get_session(@conn, :user_name) || "Unknown_user"%> </a>
+                <a href= <%= Routes.user_path(@conn, :edit, Plug.Conn.get_session(@conn, :user_id)) %>> <%= get_session(@conn, :user_name) || HelloContextWeb.UserView.get_user_name(@conn)%> </a>
                 <a href= <%= Routes.session_path(@conn, :login_out) %>> Login out </a>
               </li>
             <%= else %>

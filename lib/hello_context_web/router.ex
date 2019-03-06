@@ -17,10 +17,16 @@ defmodule HelloContextWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/users", UserController
+    # resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete],
                                               singleton: true
     get "/login_out", SessionController, :login_out
+  end
+
+  scope "/", HelloContextWeb do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/users", UserController
   end
   
   scope "/cms", HelloContextWeb.CMS, as: :cms do
