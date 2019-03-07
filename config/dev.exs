@@ -19,14 +19,14 @@ config :hello_context, HelloContextWeb.Endpoint,
       "--watch-stdin",
       cd: Path.expand("../assets", __DIR__)
     ]
-  ],
-  https: [
-    port: 8088,
-    cipher_suite: :strong,
-    keyfile: "priv/cert/1874559_www.longkui.info.key",      # ssl安全证书， https
-    certfile: "priv/cert/1874559_www.longkui.info.pem"
-  ],
-  force_ssl: [rewrite_on: [:x_forwarded_proto], host: "120.79.171.83:8088"]       # 强制使用ssl，host为抓发的地址
+  ]
+  # https: [
+  #   port: 80,
+  #   cipher_suite: :strong,
+  #   keyfile: "priv/cert/1874559_www.longkui.info.key",      # ssl安全证书， https
+  #   certfile: "priv/cert/1874559_www.longkui.info.pem"
+  # ],
+  # force_ssl: [rewrite_on: [:x_forwarded_proto]]       # 强制使用ssl，host为抓发的地址
   # force_ssl: :hsts  # hsts 百度
 
 # ## SSL Support
