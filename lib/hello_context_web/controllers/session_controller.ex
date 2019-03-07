@@ -19,7 +19,8 @@ defmodule HelloContextWeb.SessionController do
       {:error, :unauthorized} ->
         conn
         |> put_flash(:error, "Bad email/password combination")
-        |> redirect(to: Routes.session_path(conn, :new))
+        |> render("new.html", email: email)
+        # |> redirect(to: Routes.session_path(conn, :new))
     end
   end
 

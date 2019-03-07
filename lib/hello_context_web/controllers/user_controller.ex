@@ -4,6 +4,8 @@ defmodule HelloContextWeb.UserController do
   alias HelloContext.Accounts
   alias HelloContext.Accounts.User
 
+  plug Plug.Auth when action not in [:new]
+
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.html", users: users)

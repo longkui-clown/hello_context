@@ -5,6 +5,7 @@ defmodule HelloContext.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :name, :string
       add :username, :string
+      add :pwd, :string
 
       timestamps()
     end

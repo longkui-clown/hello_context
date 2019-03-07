@@ -18,14 +18,14 @@ defmodule HelloContext.Accounts do
 
   """
 
-  def authenticate_by_email_password(email, _password) do
+  def authenticate_by_email_password(email, password) do
     query =
       from u in User,
         inner_join: c in assoc(u, :credential),
-        where: c.email == ^email
+        where: c.email == ^email and u.pwd == ^password
   
     case Repo.one(query) do
-      %User{} = user -> {:ok, user}
+      %User{} = user -> {:ok, user |> Map.delete(:pwd)}
       nil -> {:error, :unauthorized}
     end
   end

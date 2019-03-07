@@ -6,6 +6,7 @@ defmodule HelloContext.Accounts.User do
   schema "users" do
     field :name, :string
     field :username, :string
+    field :pwd, :string
     has_one :credential, Credential
 
     timestamps()
@@ -14,8 +15,8 @@ defmodule HelloContext.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :username])
-    |> validate_required([:name, :username])
+    |> cast(attrs, [:name, :username, :pwd])
+    |> validate_required([:name, :username, :pwd])
     |> unique_constraint(:username)
   end
 end
