@@ -5,7 +5,7 @@ defmodule HelloContextWeb.UserView do
   def get_user_name(conn) do
     case Plug.Conn.get_session(conn, :user_id) do
       id when is_integer(id) ->
-        Accounts.get_user!(id)
+        Accounts.get_user!(id).name
       _ ->
         conn
         |> Plug.Conn.clear_session()

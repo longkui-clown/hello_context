@@ -42,7 +42,12 @@ defmodule HelloContextWeb.UserController do
 
     case Accounts.update_user(user, user_params) do
       {:ok, user} ->
-        conn
+        if to_string(get_session(conn, :user_id)) == id do
+          conn
+          |> put_session(:user_name, user.username)
+        else
+          conn
+        end
         |> put_flash(:info, "User updated successfully.")
         |> redirect(to: Routes.user_path(conn, :show, user))
 
