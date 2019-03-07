@@ -52,6 +52,7 @@ defmodule HelloContext.Accounts do
   def get_user!(id) do 
     Repo.get!(User, id)
     |> Repo.preload(:credential)
+    |> Map.delete(:pwd)
   end
 
   @doc """
