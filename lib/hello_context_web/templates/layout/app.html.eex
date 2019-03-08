@@ -9,6 +9,11 @@
     <link rel="shortcut icon" href="<%= Routes.static_path(@conn, "/favicon.ico") %>" type=image/x-icon>
   </head>
   <body>
+    <%# <style>
+      a:visited{
+        color: red;
+      }
+    </style> %>
     <header>
       <section class="container">
         <nav role="navigation">
@@ -37,4 +42,16 @@
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
+
+  
+  <div class="footer">
+    <div align="center">
+      <font size="1.5">本站所有资源来源于互联网网友交流,只供网络测试和学习交流所用、所有资源版权归原权利人，如有关资源侵犯了你的权益，请联系告之，我们将于第一时间删除！ </font> </br>
+      <font size="1.5">联系站长：longkui.clown@gmail.com</font> </br>
+      <a href="http://www.miitbeian.gov.cn/" target="_blank">
+        <font size="1.7">蜀ICP备19006265号</font> 
+      </a>
+    </dib>
+  </div>
+
 </html>
