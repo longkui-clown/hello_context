@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>HelloContext · Phoenix Framework</title>
+    <title><%= title() %></title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <link rel="shortcut icon" href="<%= Routes.static_path(@conn, "/favicon.ico") %>" type=image/x-icon>
   </head>
@@ -23,11 +23,11 @@
                 <a href= <%= Routes.user_path(@conn, :edit, Plug.Conn.get_session(@conn, :user_id)) %>> <%= get_session(@conn, :user_name) || HelloContextWeb.UserView.get_user_name(@conn)%> </a>
                 <a href= <%= Routes.session_path(@conn, :login_out) %>> Login out </a>
               </li>
-            <%= else %>
+            <% else %>
               <li>
                 <a href= <%= Routes.session_path(@conn, :new) %>>Login </a>
               </li>
-            <%= end %>
+            <%end %>
           </ul>
         </nav>
         <a href="/" class="phx-logo">
